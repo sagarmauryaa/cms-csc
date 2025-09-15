@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_member_faculties",
+  "info": {
+    "displayName": "Faculty"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "faculties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faculty.faculty"
+    }
+  },
+  "config": {}
+}

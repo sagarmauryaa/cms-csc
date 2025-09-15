@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_common_documents",
+  "info": {
+    "displayName": "Documents"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "PDFFile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

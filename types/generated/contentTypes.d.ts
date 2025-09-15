@@ -407,6 +407,69 @@ export interface ApiAcademicsAdmissionAcademicsAdmission
   };
 }
 
+export interface ApiAcdemicCourseAcdemicCourse
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'acdemic_courses';
+  info: {
+    displayName: 'Acdemic Course';
+    pluralName: 'acdemic-courses';
+    singularName: 'acdemic-course';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    acdemic: Schema.Attribute.Relation<'oneToOne', 'api::acdemic.acdemic'> &
+      Schema.Attribute.Private;
+    content: Schema.Attribute.DynamicZone<['member.faculty', 'common.docs']>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::acdemic-course.acdemic-course'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Seo: Schema.Attribute.Component<'common.seo', false>;
+    Slug: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAcdemicAcdemic extends Struct.CollectionTypeSchema {
+  collectionName: 'acdemics';
+  info: {
+    displayName: 'Acdemic';
+    pluralName: 'acdemics';
+    singularName: 'acdemic';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::acdemic.acdemic'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
   collectionName: 'faculties';
   info: {
@@ -981,6 +1044,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::academics-admission.academics-admission': ApiAcademicsAdmissionAcademicsAdmission;
+      'api::acdemic-course.acdemic-course': ApiAcdemicCourseAcdemicCourse;
+      'api::acdemic.acdemic': ApiAcdemicAcdemic;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::policy.policy': ApiPolicyPolicy;
       'plugin::content-releases.release': PluginContentReleasesRelease;

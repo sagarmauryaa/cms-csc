@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_common_docs",
+  "info": {
+    "displayName": "Docs"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Desc": {
+      "type": "string"
+    },
+    "Document": {
+      "type": "component",
+      "component": "common.documents",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
