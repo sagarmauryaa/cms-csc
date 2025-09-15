@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "academics_admissions",
+  "info": {
+    "singularName": "academics-admission",
+    "pluralName": "academics-admissions",
+    "displayName": "Academics Admission"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Name",
+      "required": true
+    },
+    "Seo": {
+      "type": "component",
+      "component": "common.seo",
+      "repeatable": false
+    },
+    "Content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

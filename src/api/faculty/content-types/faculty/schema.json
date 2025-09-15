@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faculties",
+  "info": {
+    "singularName": "faculty",
+    "pluralName": "faculties",
+    "displayName": "Faculty"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Designation": {
+      "type": "string",
+      "required": true
+    },
+    "ProfileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Faculty": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Degree",
+        "Junior",
+        "Non-Teaching"
+      ]
+    },
+    "Bio": {
+      "type": "text"
+    }
+  }
+}
