@@ -15,13 +15,6 @@
       "type": "string",
       "required": true
     },
-    "Designation": {
-      "type": "string",
-      "required": true
-    },
-    "Qualification": {
-      "type": "string"
-    },
     "ProfileImage": {
       "type": "media",
       "multiple": false,
@@ -30,17 +23,25 @@
         "images"
       ]
     },
-    "Faculty": {
-      "type": "enumeration",
-      "required": true,
-      "enum": [
-        "Degree",
-        "Junior",
-        "Non-Teaching"
-      ]
+    "Designation": {
+      "type": "string",
+      "required": true
+    },
+    "Qualification": {
+      "type": "string",
+      "required": true
     },
     "Bio": {
       "type": "text"
+    },
+    "FacultyType": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Degree College",
+        "Junior College",
+        "Non-Teaching"
+      ]
     }
   }
 }

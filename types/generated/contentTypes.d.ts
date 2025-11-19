@@ -470,6 +470,41 @@ export interface ApiAcdemicAcdemic extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
+  collectionName: 'achievements';
+  info: {
+    displayName: 'Achievement';
+    pluralName: 'achievements';
+    singularName: 'achievement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AchievementType: Schema.Attribute.Enumeration<
+      ['Institute', 'Student', 'Faculty']
+    > &
+      Schema.Attribute.Required;
+    Content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Gallery: Schema.Attribute.Media<'images' | 'files', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::achievement.achievement'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    ShortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   collectionName: 'contact_pages';
   info: {
@@ -545,8 +580,8 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Designation: Schema.Attribute.String & Schema.Attribute.Required;
-    Faculty: Schema.Attribute.Enumeration<
-      ['Degree', 'Junior', 'Non-Teaching']
+    FacultyType: Schema.Attribute.Enumeration<
+      ['Degree College', 'Junior College', 'Non-Teaching']
     > &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -558,7 +593,7 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
     Name: Schema.Attribute.String & Schema.Attribute.Required;
     ProfileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Qualification: Schema.Attribute.String;
+    Qualification: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -657,6 +692,73 @@ export interface ApiRecognitionRecognition extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiResearchPaperResearchPaper
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'research_papers';
+  info: {
+    displayName: 'Research Paper';
+    pluralName: 'research-papers';
+    singularName: 'research-paper';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Date: Schema.Attribute.Date & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::research-paper.research-paper'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Organizer: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    PublishedBy: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Venue: Schema.Attribute.String;
+  };
+}
+
+export interface ApiResultResult extends Struct.CollectionTypeSchema {
+  collectionName: 'results';
+  info: {
+    displayName: 'Result';
+    pluralName: 'results';
+    singularName: 'result';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Course: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ExaminationType: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::result.result'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    PDFFile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Semester: Schema.Attribute.Enumeration<['I', 'II', 'III', 'IV', 'V', 'VI']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Year: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1172,12 +1274,15 @@ declare module '@strapi/strapi' {
       'api::academics-admission.academics-admission': ApiAcademicsAdmissionAcademicsAdmission;
       'api::acdemic-course.acdemic-course': ApiAcdemicCourseAcdemicCourse;
       'api::acdemic.acdemic': ApiAcdemicAcdemic;
+      'api::achievement.achievement': ApiAchievementAchievement;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::event.event': ApiEventEvent;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::notice.notice': ApiNoticeNotice;
       'api::policy.policy': ApiPolicyPolicy;
       'api::recognition.recognition': ApiRecognitionRecognition;
+      'api::research-paper.research-paper': ApiResearchPaperResearchPaper;
+      'api::result.result': ApiResultResult;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

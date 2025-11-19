@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "research_papers",
+  "info": {
+    "singularName": "research-paper",
+    "pluralName": "research-papers",
+    "displayName": "Research Paper"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Date": {
+      "type": "date",
+      "required": true
+    },
+    "Venue": {
+      "type": "string"
+    },
+    "Organizer": {
+      "type": "string"
+    },
+    "PublishedBy": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

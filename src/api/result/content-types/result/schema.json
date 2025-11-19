@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "results",
+  "info": {
+    "singularName": "result",
+    "pluralName": "results",
+    "displayName": "Result"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "PDFFile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Course": {
+      "type": "string",
+      "required": true
+    },
+    "Semester": {
+      "type": "enumeration",
+      "enum": [
+        "I",
+        "II",
+        "III",
+        "IV",
+        "V",
+        "VI"
+      ]
+    },
+    "Year": {
+      "type": "string",
+      "required": true
+    },
+    "ExaminationType": {
+      "type": "string"
+    }
+  }
+}

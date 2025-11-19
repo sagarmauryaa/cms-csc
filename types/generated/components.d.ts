@@ -1,5 +1,18 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CommonAboutContent extends Struct.ComponentSchema {
+  collectionName: 'components_common_about_contents';
+  info: {
+    displayName: 'AboutContent';
+  };
+  attributes: {
+    Content: Schema.Attribute.Text;
+    Description: Schema.Attribute.RichText;
+    Title: Schema.Attribute.String;
+    ViewMode: Schema.Attribute.Enumeration<['Horizontal', 'Vertical']>;
+  };
+}
+
 export interface CommonContactDetail extends Struct.ComponentSchema {
   collectionName: 'components_common_contact_details';
   info: {
@@ -63,6 +76,21 @@ export interface ContactContactInfo extends Struct.ComponentSchema {
   };
 }
 
+export interface EventEventCard extends Struct.ComponentSchema {
+  collectionName: 'components_event_event_cards';
+  info: {
+    displayName: 'EventCard';
+  };
+  attributes: {
+    Date: Schema.Attribute.Date;
+    Gallery: Schema.Attribute.Media<'images' | 'files', true>;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    ShortDescription: Schema.Attribute.Text;
+    Thumbnail: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface MemberFaculty extends Struct.ComponentSchema {
   collectionName: 'components_member_faculties';
   info: {
@@ -78,11 +106,13 @@ export interface MemberFaculty extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'common.about-content': CommonAboutContent;
       'common.contact-detail': CommonContactDetail;
       'common.docs': CommonDocs;
       'common.documents': CommonDocuments;
       'common.seo': CommonSeo;
       'contact.contact-info': ContactContactInfo;
+      'event.event-card': EventEventCard;
       'member.faculty': MemberFaculty;
     }
   }
