@@ -19,6 +19,9 @@
       "type": "string",
       "required": true
     },
+    "Qualification": {
+      "type": "string"
+    },
     "ProfileImage": {
       "type": "media",
       "multiple": false,

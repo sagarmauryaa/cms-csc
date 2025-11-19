@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notices",
+  "info": {
+    "singularName": "notice",
+    "pluralName": "notices",
+    "displayName": "Notice"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Date": {
+      "type": "date",
+      "required": true
+    },
+    "Description": {
+      "type": "text"
+    },
+    "File": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

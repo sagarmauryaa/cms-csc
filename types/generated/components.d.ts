@@ -1,5 +1,19 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CommonContactDetail extends Struct.ComponentSchema {
+  collectionName: 'components_common_contact_details';
+  info: {
+    displayName: 'Contact Detail';
+  };
+  attributes: {
+    address: Schema.Attribute.String;
+    email: Schema.Attribute.String;
+    Label: Schema.Attribute.String & Schema.Attribute.Required;
+    mobile: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface CommonDocs extends Struct.ComponentSchema {
   collectionName: 'components_common_docs';
   info: {
@@ -38,6 +52,17 @@ export interface CommonSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface ContactContactInfo extends Struct.ComponentSchema {
+  collectionName: 'components_contact_contact_infos';
+  info: {
+    displayName: 'ContactInfo';
+  };
+  attributes: {
+    Info: Schema.Attribute.Component<'common.contact-detail', true>;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface MemberFaculty extends Struct.ComponentSchema {
   collectionName: 'components_member_faculties';
   info: {
@@ -53,9 +78,11 @@ export interface MemberFaculty extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'common.contact-detail': CommonContactDetail;
       'common.docs': CommonDocs;
       'common.documents': CommonDocuments;
       'common.seo': CommonSeo;
+      'contact.contact-info': ContactContactInfo;
       'member.faculty': MemberFaculty;
     }
   }

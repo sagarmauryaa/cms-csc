@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_common_contact_details",
+  "info": {
+    "displayName": "Contact Detail"
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "mobile": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

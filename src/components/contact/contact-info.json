@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_contact_contact_infos",
+  "info": {
+    "displayName": "ContactInfo"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Info": {
+      "type": "component",
+      "component": "common.contact-detail",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
