@@ -65,6 +65,19 @@ export interface CommonSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonTestimonial extends Struct.ComponentSchema {
+  collectionName: 'components_common_testimonials';
+  info: {
+    displayName: 'Testimonial';
+  };
+  attributes: {
+    Image: Schema.Attribute.Media<'images' | 'files'>;
+    Location: Schema.Attribute.String;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Thoughts: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ContactContactInfo extends Struct.ComponentSchema {
   collectionName: 'components_contact_contact_infos';
   info: {
@@ -111,6 +124,7 @@ declare module '@strapi/strapi' {
       'common.docs': CommonDocs;
       'common.documents': CommonDocuments;
       'common.seo': CommonSeo;
+      'common.testimonial': CommonTestimonial;
       'contact.contact-info': ContactContactInfo;
       'event.event-card': EventEventCard;
       'member.faculty': MemberFaculty;
