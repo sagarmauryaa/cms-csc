@@ -58,8 +58,7 @@ export interface CommonSeo extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.String;
     keywords: Schema.Attribute.String;
-    og_image: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
+    og_image: Schema.Attribute.Media<'images' | 'files'>;
     Schemas: Schema.Attribute.JSON;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };

@@ -762,6 +762,75 @@ export interface ApiResultResult extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiStudentCornerPageStudentCornerPage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'student_corner_pages';
+  info: {
+    displayName: 'Student Corner Page';
+    pluralName: 'student-corner-pages';
+    singularName: 'student-corner-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Faculty: Schema.Attribute.Component<'member.faculty', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-corner-page.student-corner-page'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Seo: Schema.Attribute.Component<'common.seo', false>;
+    Slug: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTrusteeTrustee extends Struct.CollectionTypeSchema {
+  collectionName: 'trustees';
+  info: {
+    displayName: 'Trustee';
+    pluralName: 'trustees';
+    singularName: 'trustee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    Designation: Schema.Attribute.String & Schema.Attribute.Required;
+    DesktopImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::trustee.trustee'
+    > &
+      Schema.Attribute.Private;
+    MobileImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Qualification: Schema.Attribute.String;
+    ShortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1283,6 +1352,8 @@ declare module '@strapi/strapi' {
       'api::recognition.recognition': ApiRecognitionRecognition;
       'api::research-paper.research-paper': ApiResearchPaperResearchPaper;
       'api::result.result': ApiResultResult;
+      'api::student-corner-page.student-corner-page': ApiStudentCornerPageStudentCornerPage;
+      'api::trustee.trustee': ApiTrusteeTrustee;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
