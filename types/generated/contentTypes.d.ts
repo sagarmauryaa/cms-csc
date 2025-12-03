@@ -839,8 +839,14 @@ export interface ApiStudentCornerPageStudentCornerPage
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.RichText;
-    Faculty: Schema.Attribute.Component<'member.faculty', true>;
+    Description: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    Faculty: Schema.Attribute.Component<'member.faculty', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -868,10 +874,16 @@ export interface ApiTrusteeTrustee extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
     Designation: Schema.Attribute.String & Schema.Attribute.Required;
     DesktopImage: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;

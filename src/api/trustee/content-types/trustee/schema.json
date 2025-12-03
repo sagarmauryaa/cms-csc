@@ -30,9 +30,6 @@
       "type": "text",
       "required": true
     },
-    "Description": {
-      "type": "text"
-    },
     "DesktopImage": {
       "type": "media",
       "multiple": false,
@@ -50,6 +47,13 @@
         "images",
         "files"
       ]
+    },
+    "Content": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
     }
   }
 }
