@@ -591,6 +591,7 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Position: Schema.Attribute.String & Schema.Attribute.Required;
     ProfileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Qualification: Schema.Attribute.String & Schema.Attribute.Required;
@@ -740,10 +741,7 @@ export interface ApiRecognitionRecognition extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Date: Schema.Attribute.Date & Schema.Attribute.Required;
-    File: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
+    File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -838,10 +836,10 @@ export interface ApiStudentCornerPageStudentCornerPage
     draftAndPublish: true;
   };
   attributes: {
-    Content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description: Schema.Attribute.RichText;
     Faculty: Schema.Attribute.Component<'member.faculty', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -886,6 +884,7 @@ export interface ApiTrusteeTrustee extends Struct.CollectionTypeSchema {
     MobileImage: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Position: Schema.Attribute.Integer & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Qualification: Schema.Attribute.String;
     ShortDescription: Schema.Attribute.Text & Schema.Attribute.Required;

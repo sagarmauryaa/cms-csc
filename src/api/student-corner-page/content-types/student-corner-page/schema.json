@@ -25,8 +25,8 @@
       "component": "common.seo",
       "repeatable": false
     },
-    "Content": {
-      "type": "blocks"
+    "Description": {
+      "type": "richtext"
     },
     "Faculty": {
       "type": "component",

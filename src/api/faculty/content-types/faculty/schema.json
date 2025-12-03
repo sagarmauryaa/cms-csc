@@ -11,6 +11,10 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "Position": {
+      "type": "string",
+      "required": true
+    },
     "Name": {
       "type": "string",
       "required": true
