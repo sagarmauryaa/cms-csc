@@ -442,7 +442,13 @@ export interface ApiAcademicsAdmissionAcademicsAdmission
     draftAndPublish: true;
   };
   attributes: {
-    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -556,6 +562,35 @@ export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
     Name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     ShortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCommonCommon extends Struct.SingleTypeSchema {
+  collectionName: 'commons';
+  info: {
+    displayName: 'Common';
+    pluralName: 'commons';
+    singularName: 'common';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::common.common'
+    > &
+      Schema.Attribute.Private;
+    MenuSchemas: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    TopBarSchemas: Schema.Attribute.JSON;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -903,7 +938,6 @@ export interface ApiStudentCornerPageStudentCornerPage
           preset: 'defaultHtml';
         }
       >;
-    Faculty: Schema.Attribute.Component<'member.faculty', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1477,6 +1511,7 @@ declare module '@strapi/strapi' {
       'api::acdemic-course.acdemic-course': ApiAcdemicCourseAcdemicCourse;
       'api::acdemic.acdemic': ApiAcdemicAcdemic;
       'api::achievement.achievement': ApiAchievementAchievement;
+      'api::common.common': ApiCommonCommon;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::event.event': ApiEventEvent;
       'api::faculty.faculty': ApiFacultyFaculty;

@@ -27,8 +27,11 @@
       "repeatable": false
     },
     "Content": {
-      "type": "blocks",
-      "required": true
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
     }
   }
 }

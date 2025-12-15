@@ -30,12 +30,8 @@
       "customField": "plugin::ckeditor5.CKEditor",
       "options": {
         "preset": "defaultHtml"
-      }
-    },
-    "Faculty": {
-      "type": "component",
-      "component": "member.faculty",
-      "repeatable": false
+      },
+      "required": false
     }
   }
 }
