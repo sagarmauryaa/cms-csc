@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_home_founder_sliders",
+  "info": {
+    "displayName": "FounderSlider"
+  },
+  "options": {},
+  "attributes": {
+    "Heading": {
+      "type": "string"
+    },
+    "Slider": {
+      "type": "component",
+      "component": "home.banner-slider",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

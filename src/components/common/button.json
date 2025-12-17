@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_common_buttons",
+  "info": {
+    "displayName": "Button"
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "string",
+      "required": true
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "External",
+        "Download"
+      ]
+    },
+    "Link": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

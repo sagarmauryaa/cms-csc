@@ -13,6 +13,29 @@ export interface CommonAboutContent extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonAboutInfo extends Struct.ComponentSchema {
+  collectionName: 'components_common_about_infos';
+  info: {
+    displayName: 'AboutInfo';
+  };
+  attributes: {
+    Content: Schema.Attribute.Text;
+    Heading: Schema.Attribute.String;
+  };
+}
+
+export interface CommonButton extends Struct.ComponentSchema {
+  collectionName: 'components_common_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    Link: Schema.Attribute.String;
+    Text: Schema.Attribute.String & Schema.Attribute.Required;
+    Type: Schema.Attribute.Enumeration<['External', 'Download']>;
+  };
+}
+
 export interface CommonContactDetail extends Struct.ComponentSchema {
   collectionName: 'components_common_contact_details';
   info: {
@@ -103,6 +126,32 @@ export interface EventEventCard extends Struct.ComponentSchema {
   };
 }
 
+export interface HomeBannerSlider extends Struct.ComponentSchema {
+  collectionName: 'components_home_banner_sliders';
+  info: {
+    displayName: 'BannerSlider';
+  };
+  attributes: {
+    Button: Schema.Attribute.Component<'common.button', false>;
+    Content: Schema.Attribute.Text;
+    DesktopImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    MobileImage: Schema.Attribute.Media<'images' | 'files'>;
+    Title: Schema.Attribute.String;
+  };
+}
+
+export interface HomeFounderSlider extends Struct.ComponentSchema {
+  collectionName: 'components_home_founder_sliders';
+  info: {
+    displayName: 'FounderSlider';
+  };
+  attributes: {
+    Heading: Schema.Attribute.String;
+    Slider: Schema.Attribute.Component<'home.banner-slider', true>;
+  };
+}
+
 export interface MemberFaculty extends Struct.ComponentSchema {
   collectionName: 'components_member_faculties';
   info: {
@@ -119,6 +168,8 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'common.about-content': CommonAboutContent;
+      'common.about-info': CommonAboutInfo;
+      'common.button': CommonButton;
       'common.contact-detail': CommonContactDetail;
       'common.docs': CommonDocs;
       'common.documents': CommonDocuments;
@@ -126,6 +177,8 @@ declare module '@strapi/strapi' {
       'common.testimonial': CommonTestimonial;
       'contact.contact-info': ContactContactInfo;
       'event.event-card': EventEventCard;
+      'home.banner-slider': HomeBannerSlider;
+      'home.founder-slider': HomeFounderSlider;
       'member.faculty': MemberFaculty;
     }
   }

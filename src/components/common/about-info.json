@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_common_about_infos",
+  "info": {
+    "displayName": "AboutInfo"
+  },
+  "options": {},
+  "attributes": {
+    "Heading": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
