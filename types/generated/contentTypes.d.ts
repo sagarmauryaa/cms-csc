@@ -511,35 +511,6 @@ export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCommonCommon extends Struct.SingleTypeSchema {
-  collectionName: 'commons';
-  info: {
-    displayName: 'Common';
-    pluralName: 'commons';
-    singularName: 'common';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::common.common'
-    > &
-      Schema.Attribute.Private;
-    MenuSchemas: Schema.Attribute.JSON;
-    publishedAt: Schema.Attribute.DateTime;
-    TopBarSchemas: Schema.Attribute.JSON;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiContactInquiryContactInquiry
   extends Struct.CollectionTypeSchema {
   collectionName: 'contact_inquiries';
@@ -566,36 +537,6 @@ export interface ApiContactInquiryContactInquiry
     MobileNumber: Schema.Attribute.String;
     Name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
-  collectionName: 'contact_pages';
-  info: {
-    displayName: 'Contact Page';
-    pluralName: 'contact-pages';
-    singularName: 'contact-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Contacts: Schema.Attribute.Component<'contact.contact-info', true>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact-page.contact-page'
-    > &
-      Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    Seo: Schema.Attribute.Component<'common.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -692,39 +633,6 @@ export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
     Name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Thumbnail: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
-  collectionName: 'home_pages';
-  info: {
-    displayName: 'HomePage';
-    pluralName: 'home-pages';
-    singularName: 'home-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Content: Schema.Attribute.DynamicZone<
-      ['common.about-content', 'home.founder-slider']
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::home-page.home-page'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    Seo: Schema.Attribute.Component<'common.seo', true>;
-    Sliders: Schema.Attribute.Component<'home.banner-slider', true> &
       Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1518,13 +1426,10 @@ declare module '@strapi/strapi' {
       'api::acdemic-course.acdemic-course': ApiAcdemicCourseAcdemicCourse;
       'api::acdemic.acdemic': ApiAcdemicAcdemic;
       'api::achievement.achievement': ApiAchievementAchievement;
-      'api::common.common': ApiCommonCommon;
       'api::contact-inquiry.contact-inquiry': ApiContactInquiryContactInquiry;
-      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::event.event': ApiEventEvent;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::gallery.gallery': ApiGalleryGallery;
-      'api::home-page.home-page': ApiHomePageHomePage;
       'api::iqac-page.iqac-page': ApiIqacPageIqacPage;
       'api::notice.notice': ApiNoticeNotice;
       'api::policy.policy': ApiPolicyPolicy;
