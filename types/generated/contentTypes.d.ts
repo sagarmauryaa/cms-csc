@@ -511,6 +511,35 @@ export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCommonCommon extends Struct.SingleTypeSchema {
+  collectionName: 'commons';
+  info: {
+    displayName: 'Common';
+    pluralName: 'commons';
+    singularName: 'common';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Header: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::common.common'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    TopBar: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactInquiryContactInquiry
   extends Struct.CollectionTypeSchema {
   collectionName: 'contact_inquiries';
@@ -1426,6 +1455,7 @@ declare module '@strapi/strapi' {
       'api::acdemic-course.acdemic-course': ApiAcdemicCourseAcdemicCourse;
       'api::acdemic.acdemic': ApiAcdemicAcdemic;
       'api::achievement.achievement': ApiAchievementAchievement;
+      'api::common.common': ApiCommonCommon;
       'api::contact-inquiry.contact-inquiry': ApiContactInquiryContactInquiry;
       'api::event.event': ApiEventEvent;
       'api::faculty.faculty': ApiFacultyFaculty;
