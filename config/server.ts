@@ -4,4 +4,12 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  url: env("PUBLIC_URL", "http://localhost:1337"),
+  admin: { url: env("STRAPI_ADMIN_BACKEND_URL", "http://localhost:1337") },
+  webhooks: {
+    populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
+  },
+  server: {
+    allowedHosts: ['admin.cscollege.cloud', "cscollege.cloud", 'localhost', '127.0.0.1'],
+  }
 });

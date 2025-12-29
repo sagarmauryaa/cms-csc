@@ -669,6 +669,35 @@ export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
+  collectionName: 'home_pages';
+  info: {
+    displayName: 'HomePage';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Seo: Schema.Attribute.Component<'common.seo', false>;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiIqacPageIqacPage extends Struct.CollectionTypeSchema {
   collectionName: 'iqac_pages';
   info: {
@@ -1460,6 +1489,7 @@ declare module '@strapi/strapi' {
       'api::event.event': ApiEventEvent;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::gallery.gallery': ApiGalleryGallery;
+      'api::home-page.home-page': ApiHomePageHomePage;
       'api::iqac-page.iqac-page': ApiIqacPageIqacPage;
       'api::notice.notice': ApiNoticeNotice;
       'api::policy.policy': ApiPolicyPolicy;
